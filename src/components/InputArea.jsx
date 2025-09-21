@@ -26,18 +26,23 @@ function InputArea(props) {
           });
     }
   }
-  function handleAdd(){
-          props.onAdd(note);
-          setNote({
-            title: "",
-            content: "",
-            blogger:"",
-          });
-      if (note.title.trim().length === 0 || note.content.trim().length === 0 || note.blogger.trim().length === 0) {
+
+function handleAdd() {
+  if (
+    note.title.trim().length === 0 ||
+    note.content.trim().length === 0 ||
+    note.blogger.trim().length === 0
+  ) {
     alert("Write some text before adding!");
     return;
   }
-      }
+  props.onAdd(note);
+  setNote({
+    title: "",
+    content: "",
+    blogger: "",
+  });
+}
 
   return (
     <div className="container">    

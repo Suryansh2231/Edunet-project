@@ -35,6 +35,12 @@ function App() {
       });
     });
   }
+
+  function editBlogItem(id , blogItem) {
+    setNoteItem((prevBlogItem)=> 
+        prevBlogItem.map((blog) => (blog.id === id ? blogItem : blog))
+    
+  )}
   return (
     <div>
       <Navbar checkSignUp={isSignUp} />
@@ -46,6 +52,7 @@ function App() {
               addBlog={addNoteItem}
               blogItem={noteItem}
               deleteBlog={deleteNoteItem}
+              editBlog={editBlogItem}
               checkSignUp={isSignUp} 
             />
           }

@@ -30,6 +30,7 @@ function Home(props) {
             content={note.content}
             blogger={note.blogger}
             onDelete={props.deleteBlog}
+            onEdit={props.editBlog}
           />
         );
       })}

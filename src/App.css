@@ -10,95 +10,60 @@ p{
   color: #333333;
 }
  
-#navbar {
+/* Navbar container */
+.navbar {
   color: white;
   background-color: #0a192f;
   height: 5rem;
   width: 100%; 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
   top: 0;
   left: 0;
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
 }
 
-.nav-heading {
-  font-size: 2.5rem;
-  margin: 1rem;
-  margin-left: 4rem;
+/* Logo */
+.nav-logo {
+  font-size: 2rem;
+  font-weight: bold;
   color: #00ffff;
 }
 
+/* Default nav-links (desktop) */
 .nav-links {
-  margin-top: 1.6rem;
-  margin-left: auto; /* ✅ Prevents overflow */
-  margin-right: 1rem;
+  display: flex;
+  gap: 4rem;
+  margin-right: 3rem;
 }
 
 .link {
-  padding-left: 2.5rem;
   text-decoration: none;
-  font-size: 1.5rem;
-  color: #e0e0e0;
+  color: white;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
   cursor: pointer;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  color: white;
-  margin-right: 2rem;
-  cursor: pointer;
-  margin-top: 1.6rem;
+.link:hover {
+  color: #0095ff;
 }
 
-.menu-toggle i {
-  color: white;
-}
-.link:hover{
-      color: #0095ff;
-
-}
 .link.active {
-    color: #0095ff;
-
+  color: #0095ff;
 }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    margin-left: auto;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #333333;
-    position: absolute;
-    top: 5rem;
-    right: 0;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 1rem;
-    z-index: 10;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .link {
-    padding: 1rem 0;
-    font-size: 1.2rem;
-  }
-
-  #navbar {
-    flex-wrap: wrap;
-  }
-
-  .nav-heading {
-    margin-left: 1.5rem;
-  }
+/* Toggle button (hidden on desktop) */
+.nav-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
 }
  /* Home-image */
  
@@ -133,14 +98,6 @@ p{
   color: white;
   font-size: 1.5rem;
 }
-
-@media (max-width : 480px) {
-  .hero{
-    overflow-x: hidden;
-  }
-  
-}
-
 
 
 .heading{
@@ -403,4 +360,119 @@ i {
 }
 .footer-socials a:hover {
   color: #00bcd4;
+}
+
+@media (max-width: 768px) {
+
+  /* ✅ Navbar */
+  .nav-toggle {
+    display: block;
+    margin-right: 3rem;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 5rem;
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    background: #112240;
+    border-radius: 8px;
+    padding: 1rem;
+    gap: 1rem;
+    overflow: hidden;
+
+    max-height: 0;      /* hidden by default */
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-links.active {
+    max-height: 400px;  /* expands */
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .link {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* ✅ Hero Section */
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  /* ✅ About Section */
+  .about p {
+    width: 90%;
+    margin: 1rem auto;
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  /* ✅ Blogs Grid */
+  .parent {
+    flex-direction: column;
+    align-items: center;
+  }
+  .blog {
+    width: 90%;
+    margin: 1rem 0;
+  }
+
+  /* ✅ Input / Add Blog Form */
+  .input-container {
+    width: 90%;
+    margin: 1.5rem auto;
+  }
+
+  /* ✅ Account Section */
+  .account-img {
+    height: 7rem;
+    width: 7rem;
+  }
+  .account-desc {
+    width: 95%;
+    font-size: 0.9rem;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* ✅ Contact Section */
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .contact-left,
+  .contact-right {
+    text-align: center;
+  }
+  .contact-right {
+    padding-left: 0;
+  }
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .contact-right {
+    padding-left: 12vw;
+  }
+  
+  
+  /* ✅ Footer */
+  #Footer {
+    font-size: 0.9rem;
+    padding: 1.5rem 1rem;
+  }
+  .footer-socials {
+    gap: 1rem;
+  }
 }
