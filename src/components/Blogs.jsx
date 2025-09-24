@@ -4,26 +4,26 @@ import Blog from "./Blog";
 function Blogs(props) {
   return (
     <div>
-      <div className="hero">
-    <div className="hero-text">
-    <h1>Welcome to My Blog</h1>
-    <p>Thoughts, stories, and ideas to inspire you</p>
-    </div>
-    </div>
-    <div className="parent">
-      {props.blogItem.map((note, index) => {
-        return (
+      <div className="hero blog-img">
+        <div className="img-text">
+          <h1>Stories & Ideas</h1>
+          <p>Exploring thoughts, experiences, and lessons worth sharing.</p>
+        </div>
+      </div>
+      <div className="parent">
+        {props.blogItem.map((blog) => (
           <Blog
-            key={index}
-            id={index}
-            title={note.title}
-            content={note.content}
-            blogger={note.blogger}
+            key={blog.id}
+            id={blog.id}
+            title={blog.title}
+            content={blog.content}
+            blogger={blog.blogger}
             onDelete={props.deleteBlog}
+            blogItem={blog}
+            onHandleBlog={props.handleEditBlog} // so you can edit from Blogs too if needed
           />
-        );
-      })}
-    </div>
+        ))}
+      </div>
     </div>
   );
 }

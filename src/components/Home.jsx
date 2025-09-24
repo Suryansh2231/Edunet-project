@@ -2,42 +2,48 @@ import React from "react";
 import Blog from "./Blog";
 import InputArea from "./InputArea";
 import { useNavigate } from "react-router-dom";
-function Home(props) {
 
+function Home(props) {
   const navigate = useNavigate();
 
-  function handleOlderBlogs(){
+  function handleOlderBlogs() {
     navigate("./blogs");
-
   }
+
   return (
     <div>
-  <div className="hero">
-    <div className="hero-text">
-    <h1>Welcome to My Blog</h1>
-    <p>Thoughts, stories, and ideas to inspire you</p>
-    </div>
-  </div>
-    <div className="parent">
-      <InputArea onAdd={props.addBlog} onAccount = {props.checkSignUp} />
-      {props.blogItem.map((note, index) => {
-        return (
-          index < 3 &&
+      <div className="hero">
+        <div className="img-text">
+          <h1>Welcome to My Blog</h1>
+          <p>Thoughts, stories, and ideas to inspire you</p>
+        </div>
+      </div>
+
+      <div className="parent">
+        <InputArea
+          onAdd={props.addBlog}
+          onAccount={props.checkSignUp}
+          editedBlogItem={props.editedBlog}
+          onUpdate={props.updateBlog}
+        />
+
+        {props.blogItem.slice(0, 3).map((blog) => (
           <Blog
-            key={index}
-            id={index}
-            title={note.title}
-            content={note.content}
-            blogger={note.blogger}
+            key={blog.id}
+            id={blog.id}
+            title={blog.title}
+            content={blog.content}
+            blogger={blog.blogger}
             onDelete={props.deleteBlog}
-            onEdit={props.editBlog}
+            onHandleBlog={props.handleEditBlog}
+            blogItem={blog}
           />
-        );
-      })}
-    </div>
-    <div className="otherBlogs">
-    <button onClick={handleOlderBlogs}>Other Blogs</button>
-    </div>
+        ))}
+      </div>
+
+      <div className="otherBlogs">
+        <button onClick={handleOlderBlogs}>Other Blogs</button>
+      </div>
     </div>
   );
 }

@@ -3,12 +3,14 @@ import React from "react";
 function About() {
   return (
     <div className="about">
-       <div className="hero">
-    <div className="hero-text">
-    <h1>Welcome to My Blog</h1>
-    <p>Thoughts, stories, and ideas to inspire you</p>
-    </div>
-    </div>
+      <div className="hero about-img">
+        <div className="img-text">
+          <h1>Who I Am</h1>
+          <p>
+            Discover the story behind the words and the passion that fuels them.
+          </p>
+        </div>
+      </div>
       <h1 className="heading">About Me</h1>
       <p>
         "Hi, I’m Suryansh Gupta, a student pursuing a degree in Artificial

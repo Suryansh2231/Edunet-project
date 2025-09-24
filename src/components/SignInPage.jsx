@@ -63,9 +63,7 @@ function SignInPage(props) {
   return (
     <div className="container">
       <div className="input-container">
-        <h1 className="heading">
-          SignIn to your Blog account
-        </h1>
+        <h1 className="heading">SignIn to your Blog account</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <Box
           className="box"

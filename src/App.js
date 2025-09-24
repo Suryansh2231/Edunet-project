@@ -10,37 +10,41 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-
-
 function App() {
-  const [noteItem, setNoteItem] = useState(() => {
-    const saved = localStorage.getItem("noteItem");
+  const [blogItem, setBlogItem] = useState(() => {
+    const saved = localStorage.getItem("blogItem");
     return saved ? JSON.parse(saved) : [];
   });
-  const [isSignUp, setIsSignUp] = useState();
+
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [editBlog, setEditBlog] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("noteItem", JSON.stringify(noteItem));
-  }, [noteItem]);
+    localStorage.setItem("blogItem", JSON.stringify(blogItem));
+  }, [blogItem]);
 
-  function addNoteItem(note) {
-    setNoteItem((prevItem) => {
-      return [...prevItem, note];
-    });
-  }
-  function deleteNoteItem(id) {
-    setNoteItem((prevNoteItem) => {
-      return prevNoteItem.filter((notes, index) => {
-        return index !== id;
-      });
-    });
+  function addBlog(blog) {
+    const newBlog = { ...blog, id: Date.now() }; // unique id
+    setBlogItem((prevItem) => [...prevItem, newBlog]);
   }
 
-  function editBlogItem(id , blogItem) {
-    setNoteItem((prevBlogItem)=> 
-        prevBlogItem.map((blog) => (blog.id === id ? blogItem : blog))
-    
-  )}
+  function deleteBlog(id) {
+    setBlogItem((prevBlogItem) =>
+      prevBlogItem.filter((blog) => blog.id !== id)
+    );
+  }
+
+  const handleEdit = (blog) => {
+    setEditBlog(blog);
+  };
+
+  const handleUpdate = (updatedBlog) => {
+    setBlogItem((prev) =>
+      prev.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
+    );
+    setEditBlog(null);
+  };
+
   return (
     <div>
       <Navbar checkSignUp={isSignUp} />
@@ -49,22 +53,24 @@ function App() {
           path="/"
           element={
             <Home
-              addBlog={addNoteItem}
-              blogItem={noteItem}
-              deleteBlog={deleteNoteItem}
-              editBlog={editBlogItem}
-              checkSignUp={isSignUp} 
+              addBlog={addBlog}
+              blogItem={blogItem}
+              deleteBlog={deleteBlog}
+              editedBlog={editBlog}
+              updateBlog={handleUpdate}
+              handleEditBlog={handleEdit}
+              checkSignUp={isSignUp}
             />
           }
         />
-        <Route path="/about" element = {<About />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/blogs"
-          element={<Blogs blogItem={noteItem} deleteBlog={deleteNoteItem} />}
+          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} />}
         />
-                <Route path="/contact" element = {<Contact />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/signUpPage" element={<SignUpPage set={setIsSignUp} />} />
-        <Route path="/signInPage" element={<SignInPage set={setIsSignUp}/>} />
+        <Route path="/signInPage" element={<SignInPage set={setIsSignUp} />} />
         <Route path="/accountSettingPage" element={<AccountSettingPage />} />
       </Routes>
       <Footer />
