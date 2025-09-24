@@ -88,7 +88,7 @@ body {
   background: rgba(0, 0, 0, 0.4);
 }
 .img-text {
-  position: relative; 
+  position: relative;
   z-index: 1;
 }
 .img-text h1 {
@@ -121,10 +121,21 @@ body {
   width: 20rem;
 }
 
+.blog:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+.blog:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 223, 235, 0.2);
+}
+
 .blog button {
   float: right;
   border: none;
 }
+
 .blog p {
   width: 80%;
   margin: 1rem;
@@ -211,6 +222,9 @@ button {
   color: #f7f7f7;
   border-radius: 5px;
 }
+button:hover {
+  background: #0056cc;
+}
 
 /* Contact Section */
 #Contact {
@@ -263,7 +277,7 @@ i {
   align-items: center;
 }
 
-.message-btn{
+.message-btn {
   cursor: pointer;
 }
 .modal-content {
@@ -301,10 +315,6 @@ i {
   border-radius: 5px;
 }
 
-.modal-content button:hover {
-  background: #0056cc;
-}
-
 .close {
   position: absolute;
   top: 12px;
@@ -325,7 +335,6 @@ i {
     opacity: 1;
   }
 }
-
 
 /* Footer section */
 #Footer {
@@ -464,6 +473,10 @@ i {
     padding-left: 12vw;
   }
 
+  .modal-content {
+    width: 80%;
+  }
+
   /* ✅ Footer */
   #Footer {
     font-size: 0.9rem;
@@ -473,4 +486,3 @@ i {
     gap: 1rem;
   }
 }
-

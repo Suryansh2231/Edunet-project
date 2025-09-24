@@ -7,7 +7,6 @@ function Contact() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Close modal if user clicks outside modal content
   const handleOutsideClick = (e) => {
     if (e.target.className === "modal") {
       closeModal();
@@ -16,7 +15,6 @@ function Contact() {
 
   return (
     <div>
-      {/* Hero Section */}
       <div className="hero contact-img">
         <div className="img-text">
           <h1>Let’s Connect</h1>
@@ -24,7 +22,6 @@ function Contact() {
         </div>
       </div>
 
-      {/* Contact Section */}
       <section id="Contact">
         <h1 className="heading">Get in Touch</h1>
         <div className="contact-container">
@@ -47,14 +44,12 @@ function Contact() {
             <a href="https://www.instagram.com/sur_ya0823/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i> sur_ya0823
             </a>
-            {/* Message Me Button */}
             <a className="message-btn" onClick={openModal}>
               <i className="fas fa-paper-plane"></i> Message Me
             </a>
           </div>
         </div>
 
-        {/* Modal */}
         {isModalOpen && (
           <div className="modal" onClick={handleOutsideClick}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>

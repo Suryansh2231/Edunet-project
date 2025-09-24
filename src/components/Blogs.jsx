@@ -20,7 +20,7 @@ function Blogs(props) {
             blogger={blog.blogger}
             onDelete={props.deleteBlog}
             blogItem={blog}
-            onHandleBlog={props.handleEditBlog} // so you can edit from Blogs too if needed
+            onHandleBlog={props.handleEditBlog} 
           />
         ))}
       </div>

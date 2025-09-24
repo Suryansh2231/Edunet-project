@@ -7,8 +7,6 @@ import TextField from "@mui/material/TextField";
 function SignInPage(props) {
   const navigate = useNavigate();
 
-  // Handle navigation to account
-
   function handleGoToAccount(e) {
     e.preventDefault();
     setLoginError("");

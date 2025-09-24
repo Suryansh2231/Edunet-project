@@ -20,7 +20,7 @@ function Navbar(props) {
   return (
     <div>
       <nav className="navbar">
-        <h1 className="nav-logo">Personal Blog</h1>
+        <h1 className="nav-logo">Edunet Insights</h1>
         <button className="nav-toggle" onClick={handleToggle}>
           {isOpen ? <ClearIcon /> : <MenuIcon />}
         </button>

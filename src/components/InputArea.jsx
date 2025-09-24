@@ -40,9 +40,9 @@ function InputArea(props) {
     }
 
     if (props.editedBlogItem) {
-      props.onUpdate(blog); // update existing
+      props.onUpdate(blog); 
     } else {
-      props.onAdd(blog); // add new
+      props.onAdd(blog); 
     }
 
     setBlog({ id: null, title: "", content: "", blogger: "" });

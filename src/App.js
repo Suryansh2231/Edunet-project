@@ -24,7 +24,7 @@ function App() {
   }, [blogItem]);
 
   function addBlog(blog) {
-    const newBlog = { ...blog, id: Date.now() }; // unique id
+    const newBlog = { ...blog, id: Date.now() }; 
     setBlogItem((prevItem) => [...prevItem, newBlog]);
   }
 
