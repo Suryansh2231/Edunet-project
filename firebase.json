@@ -1,12 +1,17 @@
 {
   "hosting": {
-    "site": "edunet-project-s08",
     "public": "build",
+    "site" : "edunet-project-s08",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
-  
 }

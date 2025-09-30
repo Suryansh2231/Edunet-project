@@ -19,6 +19,7 @@ function Blog(props) {
 
   return (
     <div className="parent">
+          {props.checkUserSignUp &&
       <div className="blog">
         <h1>{props.title}</h1>
         <p>{props.content}</p>
@@ -32,7 +33,7 @@ function Blog(props) {
         <button type="submit" onClick={handleEdit}>
           <EditIcon />
         </button>
-      </div>
+      </div>}
     </div>
   );
 }

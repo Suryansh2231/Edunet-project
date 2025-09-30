@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import logo from "../images/Profile-logo.jpg"
+import ProfilePhotoUpload from "./ProfilePhotoUpload";
 
-function AccountSettingPage() {
+function AccountSettingPage(props) {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     fullName: "Marry Doe",
@@ -20,6 +19,7 @@ function AccountSettingPage() {
 
   const handleLogout = () => {
     navigate("/signInPage");
+    props.set(false);
   };
 
   return (
@@ -29,24 +29,12 @@ function AccountSettingPage() {
         <br />
         <div className="account-box">
           <Box sx={{ position: "relative", display: "inline-block" }}>
-            <img className="account-img" src={logo} alt="" />
+            {/* <img className="account-img" src={logo} alt="" /> */}
             <Box
-              sx={{
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                backgroundColor: "#3B38A0",
-                borderRadius: "50%",
-                padding: "4px",
-                cursor: "pointer",
-                boxShadow: 2,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#f7f7f7",
-              }}
+             
             >
-              <CameraAltIcon fontSize="small" />
+              < ProfilePhotoUpload />
+
             </Box>
           </Box>
         </div>

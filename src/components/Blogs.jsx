@@ -3,6 +3,7 @@ import Blog from "./Blog";
 
 function Blogs(props) {
   return (
+    
     <div>
       <div className="hero blog-img">
         <div className="img-text">
@@ -10,7 +11,7 @@ function Blogs(props) {
           <p>Exploring thoughts, experiences, and lessons worth sharing.</p>
         </div>
       </div>
-      <div className="parent">
+     <div className="parent">
         {props.blogItem.map((blog) => (
           <Blog
             key={blog.id}
@@ -21,6 +22,8 @@ function Blogs(props) {
             onDelete={props.deleteBlog}
             blogItem={blog}
             onHandleBlog={props.handleEditBlog} 
+            checkUserSignUp = {props.checkSignUp}
+
           />
         ))}
       </div>

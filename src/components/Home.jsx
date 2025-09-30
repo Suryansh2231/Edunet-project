@@ -18,15 +18,13 @@ function Home(props) {
           <p>Thoughts, stories, and ideas to inspire you</p>
         </div>
       </div>
-
-      <div className="parent">
         <InputArea
           onAdd={props.addBlog}
           onAccount={props.checkSignUp}
           editedBlogItem={props.editedBlog}
           onUpdate={props.updateBlog}
         />
-
+       <div className="parent">
         {props.blogItem.slice(0, 3).map((blog) => (
           <Blog
             key={blog.id}
@@ -37,13 +35,14 @@ function Home(props) {
             onDelete={props.deleteBlog}
             onHandleBlog={props.handleEditBlog}
             blogItem={blog}
+            checkUserSignUp = {props.checkSignUp}
           />
-        ))}
+        ))};
       </div>
-
+       { props.checkSignUp &&
       <div className="otherBlogs">
         <button onClick={handleOlderBlogs}>Other Blogs</button>
-      </div>
+      </div>}
     </div>
   );
 }

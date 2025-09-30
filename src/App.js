@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div>      
       <Navbar checkSignUp={isSignUp} />
       <Routes>
         <Route
@@ -66,14 +66,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route
           path="/blogs"
-          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} />}
+          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} checkSignUp={isSignUp}
+/>}
         />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signUpPage" element={<SignUpPage set={setIsSignUp} />} />
+        <Route path="/signUpPage" element={<SignUpPage set={setIsSignUp}  />} />
         <Route path="/signInPage" element={<SignInPage set={setIsSignUp} />} />
-        <Route path="/accountSettingPage" element={<AccountSettingPage />} />
+        <Route path="/accountSettingPage" element={<AccountSettingPage set={setIsSignUp}/>} />
       </Routes>
-      <Footer />
+      <Footer />      
     </div>
   );
 }
