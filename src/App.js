@@ -16,7 +16,6 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  const [isSignUp, setIsSignUp] = useState(false);
   const [editBlog, setEditBlog] = useState(null);
 
   useEffect(() => {
@@ -47,7 +46,7 @@ function App() {
 
   return (
     <div>      
-      <Navbar checkSignUp={isSignUp} />
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -59,20 +58,19 @@ function App() {
               editedBlog={editBlog}
               updateBlog={handleUpdate}
               handleEditBlog={handleEdit}
-              checkSignUp={isSignUp}
             />
           }
         />
         <Route path="/about" element={<About />} />
         <Route
           path="/blogs"
-          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} checkSignUp={isSignUp}
+          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} 
 />}
         />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signUpPage" element={<SignUpPage set={setIsSignUp}  />} />
-        <Route path="/signInPage" element={<SignInPage set={setIsSignUp} />} />
-        <Route path="/accountSettingPage" element={<AccountSettingPage set={setIsSignUp}/>} />
+        <Route path="/signInPage" element={<SignInPage  />} />
+        <Route path="/signUpPage" element={<SignUpPage  />} />
+        <Route path="/accountSettingPage" element={<AccountSettingPage />} />
       </Routes>
       <Footer />      
     </div>

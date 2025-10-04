@@ -1,54 +1,52 @@
 import * as React from "react";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-export default function SignUpPage(props) {
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
+export default function SignUpPage() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-  });
   const [errors, setErrors] = useState({});
+  const { formData, setFormData, handleUsers, login, users } = useAuth();
+
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
+    if (!formData.fullName.trim())
+      newErrors.fullName = "Full name is required";
     if (!formData.phoneNumber.trim())
       newErrors.phoneNumber = "Phone number is required";
     else if (!/^\d{10}$/.test(formData.phoneNumber))
       newErrors.phoneNumber = "Phone number must be 10 digits";
+
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Email is invalid";
-    else {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        const userData = JSON.parse(storedUser);
-        if (userData.email === formData.email) {
-          newErrors.email =
-            "Email already exists. Please use a different email.";
-        }
-      }
-    }
+    else if (users.some((user) => user.email === formData.email))
+      newErrors.email = "Email already exists. Please use a different one.";
+
     if (!formData.password.trim()) newErrors.password = "Password is required";
     else if (formData.password.length < 6)
       newErrors.password = "Password must be at least 6 characters";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  function handleGoToAccount(e) {
+
+  const handleGoToAccount = (e) => {
     e.preventDefault();
+
     if (validateForm()) {
-      localStorage.setItem("user", JSON.stringify(formData));
+      handleUsers(formData); // ✅ Add new user to users array
+      login(formData); // ✅ Log in the newly signed-up user
       navigate("/accountSettingPage");
-      props.set(true);
     }
-  }
-  function handleGoToSignIn() {
+  };
+
+  const handleGoToSignIn = () => {
     navigate("/signInPage");
-  }
+  };
+
   return (
     <>
       <div className="container">

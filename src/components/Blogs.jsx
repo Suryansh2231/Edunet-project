@@ -1,7 +1,12 @@
 import React from "react";
 import Blog from "./Blog";
+import { useAuth } from "../contexts/AuthContext";
+
 
 function Blogs(props) {
+
+    const {isAuthenticated} = useAuth();
+
   return (
     
     <div>
@@ -22,8 +27,7 @@ function Blogs(props) {
             onDelete={props.deleteBlog}
             blogItem={blog}
             onHandleBlog={props.handleEditBlog} 
-            checkUserSignUp = {props.checkSignUp}
-
+            checkUserSignUp = {isAuthenticated}
           />
         ))}
       </div>

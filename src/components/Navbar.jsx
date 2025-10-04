@@ -4,9 +4,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import "../App.css";
 import logo from "../images/Profile-logo.jpg"
+import { useAuth } from "../contexts/AuthContext";
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState();
 
+  const {isAuthenticated} = useAuth();
   function handleToggle() {
     setIsOpen((prev) => !prev);
   }
@@ -57,7 +59,7 @@ function Navbar(props) {
           >
             Contact
           </Link>
-          {props.checkSignUp ? (
+          {isAuthenticated ? (
             <Link
               key={5}
               className={

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import "../App.css";
+import { useAuth } from "../contexts/AuthContext";
 
 function InputArea(props) {
   const [blog, setBlog] = useState({
@@ -9,6 +10,10 @@ function InputArea(props) {
     content: "",
     blogger: "",
   });
+
+    const { isAuthenticated } = useAuth();
+
+
 
   useEffect(() => {
     if (props.editedBlogItem) {
@@ -23,7 +28,7 @@ function InputArea(props) {
       [name]: value,
     }));
 
-    if (!props.onAccount) {
+    if (!isAuthenticated) {
       alert("Sign Up to write blogs");
       setBlog({ id: null, title: "", content: "", blogger: "" });
     }

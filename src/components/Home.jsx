@@ -2,9 +2,14 @@ import React from "react";
 import Blog from "./Blog";
 import InputArea from "./InputArea";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 
 function Home(props) {
   const navigate = useNavigate();
+
+    const {isAuthenticated} = useAuth();
+
 
   function handleOlderBlogs() {
     navigate("./blogs");
@@ -35,11 +40,11 @@ function Home(props) {
             onDelete={props.deleteBlog}
             onHandleBlog={props.handleEditBlog}
             blogItem={blog}
-            checkUserSignUp = {props.checkSignUp}
+            checkUserSignUp = {isAuthenticated}
           />
         ))};
       </div>
-       { props.checkSignUp &&
+       { isAuthenticated &&
       <div className="otherBlogs">
         <button onClick={handleOlderBlogs}>Other Blogs</button>
       </div>}

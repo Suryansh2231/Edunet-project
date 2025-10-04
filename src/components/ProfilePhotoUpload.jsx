@@ -2,43 +2,38 @@ import React, { useState, useEffect } from "react";
 
 function ProfilePhotoUpload() {
   const [image, setImage] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
 
+  // 🟢 Load current logged-in user's email
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("formData"));
+    if (currentUser && currentUser.email) {
+      setUserEmail(currentUser.email);
+
+      // Load saved image for this user
+      const savedImage = localStorage.getItem(`image_${currentUser.email}`);
+      if (savedImage) {
+        setImage(savedImage);
+      }
+    }
+  }, []);
+
+  // 🟢 When user uploads a new image
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file)); // creates preview link
+    if (file && userEmail) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+        // Save image specific to the user's email
+        localStorage.setItem(`image_${userEmail}`, reader.result);
+      };
+      reader.readAsDataURL(file); // Convert file to Base64 string
     }
   };
 
-  useEffect(() => {
-    const savedImage = localStorage.getItem("image");
-    if (savedImage) {
-      setImage(savedImage);
-    }
-  }, [])
-  
-
-  // Save name to localStorage whenever it changes
-  useEffect(() => {
-    if (image) {
-      localStorage.setItem("image", image);
-    }
-  }, [image]);
-
   return (
-    <div style={{ textAlign: "center" }}>
-      {/* <h2>Upload Profile Photo</h2> */}
-      {image && (
-        <div>
-          <img
-            src={image}
-            alt="profile preview"
-            style={{ width: "150px", height: "150px", borderRadius: "50%" }}
-          />
-        </div>
-      )}
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-    </div>
+    <div style={{ textAlign: "center" }}> {/* <h2>Upload Profile Photo</h2> */} {image && ( <div> <img src={image} alt="profile preview" style={{ width: "150px", height: "150px", borderRadius: "50%" }} /> </div> )} <input type="file" accept="image/*" onChange={handleImageChange} /> </div>
   );
 }
 
