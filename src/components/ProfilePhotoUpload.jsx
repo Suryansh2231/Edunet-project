@@ -47,7 +47,8 @@ function ProfilePhotoUpload() {
           />{" "}
         </div>
       )}{" "}
-      <input type="file" accept="image/*" onChange={handleImageChange} />{" "}
+      {!image &&
+      <input type="file" accept="image/*" onChange={handleImageChange} />}
     </div>
   );
 }

@@ -52,7 +52,7 @@ function Blogs(props) {
             <p className="blogs-desc">No blogs found. Create your first one!</p>
           )
         ) : (
-          <p>Please sign in to view your blogs.</p>
+          <p className ="blogs-desc">Please sign in to view your blogs.</p>
         )}
       </div>
     </div>

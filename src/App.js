@@ -22,8 +22,12 @@ function App() {
     localStorage.setItem("blogItem", JSON.stringify(blogItem));
   }, [blogItem]);
 
+  // ✅ Correct use of Date.now() for unique ID
   function addBlog(blog) {
-    const newBlog = { ...blog, id: Date.now() }; 
+    const newBlog = {
+      ...blog,
+      id: Date.now(), // unique ID based on timestamp
+    };
     setBlogItem((prevItem) => [...prevItem, newBlog]);
   }
 
@@ -45,7 +49,7 @@ function App() {
   };
 
   return (
-    <div>      
+    <div>
       <Navbar />
       <Routes>
         <Route
@@ -64,15 +68,14 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route
           path="/blogs"
-          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} 
-/>}
+          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} />}
         />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signInPage" element={<SignInPage  />} />
-        <Route path="/signUpPage" element={<SignUpPage  />} />
+        <Route path="/signInPage" element={<SignInPage />} />
+        <Route path="/signUpPage" element={<SignUpPage />} />
         <Route path="/accountSettingPage" element={<AccountSettingPage />} />
       </Routes>
-      <Footer />      
+      <Footer />
     </div>
   );
 }
