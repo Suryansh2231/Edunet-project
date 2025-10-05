@@ -103,9 +103,17 @@ body {
   color: #0077ff;
   text-align: center;
 }
-.about p {
+.blogs-desc {
+  color: red;
+  font-size: 1.3rem;
+  margin: auto;
+  padding: 2rem;
+}
+.about-para {
   width: 80%;
   margin: 1rem 5rem;
+  line-height: 1.5;
+  color: #444444;
 }
 .parent {
   display: flex;
@@ -193,8 +201,22 @@ body {
 }
 
 .account-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444444;
+  margin: 20px auto;
   width: 80%;
 }
+.account-detail h1 {
+  color: #112240;
+  font-weight: 600;
+}
+.account-detail p {
+  color: #112240;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
 .otherBlogs {
   display: flex;
   justify-content: center;
@@ -263,7 +285,7 @@ i {
   margin-right: 10px;
 }
 
-/* ✅ Modal Styling */
+/*  Modal Styling */
 .modal {
   position: fixed;
   z-index: 1000;
@@ -372,7 +394,7 @@ i {
 }
 
 @media (max-width: 768px) {
-  /* ✅ Navbar */
+  /*  Navbar */
   .nav-toggle {
     display: block;
     margin-right: 3rem;
@@ -406,7 +428,7 @@ i {
     text-align: center;
   }
 
-  /* ✅ Hero Section */
+  /*  Hero Section */
   .hero-text h1 {
     font-size: 2.5rem;
   }
@@ -415,15 +437,13 @@ i {
     padding: 0 1rem;
   }
 
-  /* ✅ About Section */
-  .about p {
+  /*  About Section */
+  .about-para {
     width: 90%;
     margin: 1rem auto;
     font-size: 1rem;
     text-align: justify;
   }
-
-  /* ✅ Blogs Grid */
   .parent {
     flex-direction: column;
     align-items: center;
@@ -433,13 +453,12 @@ i {
     margin: 1rem 0;
   }
 
-  /* ✅ Input / Add Blog Form */
   .input-container {
     width: 90%;
     margin: 1.5rem auto;
   }
 
-  /* ✅ Account Section */
+  /*  Account Section */
   .account-img {
     height: 5rem;
     width: 5rem;
@@ -451,7 +470,7 @@ i {
     text-align: center;
   }
 
-  /* ✅ Contact Section */
+  /*  Contact Section */
   .contact-container {
     flex-direction: column;
     align-items: center;
@@ -477,7 +496,7 @@ i {
     width: 80%;
   }
 
-  /* ✅ Footer */
+  /*  Footer */
   #Footer {
     font-size: 0.9rem;
     padding: 1.5rem 1rem;

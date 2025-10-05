@@ -11,7 +11,6 @@ function AccountSettingPage() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    // ✅ load currently logged-in user (saved in 'formData')
     const storedUser = localStorage.getItem("formData");
     if (storedUser) {
       setUserData(JSON.parse(storedUser));
@@ -24,15 +23,11 @@ function AccountSettingPage() {
   };
 
   if (!userData) {
-    // ✅ if no user found, show message
     return (
       <div className="container">
         <h2>No user logged in</h2>
         <p>Please sign in to view your account settings.</p>
-        <button
-          className="login-btn"
-          onClick={() => navigate("/signInPage")}
-        >
+        <button className="login-btn" onClick={() => navigate("/signInPage")}>
           Go to Sign In
         </button>
       </div>
@@ -42,7 +37,7 @@ function AccountSettingPage() {
   return (
     <div className="container">
       <div className="input-container">
-        <h2>User Account</h2>
+        <h1 className="heading">User Account</h1>
         <br />
         <div className="account-box">
           <Box sx={{ position: "relative", display: "inline-block" }}>
@@ -58,9 +53,10 @@ function AccountSettingPage() {
         </div>
 
         <p className="account-desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-          necessitatibus adipisci dicta labore quae sit totam eius doloribus
-          magnam at modi nisi sequi.
+          Welcome to your account, {userData.fullName}! Here you can update your
+          profile information, upload a new profile picture, and manage your
+          settings. Keeping your profile updated helps us personalize your
+          experience.
         </p>
 
         <br />

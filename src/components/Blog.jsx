@@ -19,21 +19,22 @@ function Blog(props) {
 
   return (
     <div className="parent">
-          {props.checkUserSignUp &&
-      <div className="blog">
-        <h1>{props.title}</h1>
-        <p>{props.content}</p>
-        <p>
-          Posted by <span className="blogger">{props.blogger}</span> on{" "}
-          {monthName} {date}, {year}
-        </p>
-        <button type="submit" onClick={deleteBlog}>
-          <DeleteIcon />
-        </button>
-        <button type="submit" onClick={handleEdit}>
-          <EditIcon />
-        </button>
-      </div>}
+      {props.checkUserSignUp && (
+        <div className="blog">
+          <h1>{props.title}</h1>
+          <p>{props.content}</p>
+          <p>
+            Posted by <span className="blogger">{props.blogger}</span> on{" "}
+            {monthName} {date}, {year}
+          </p>
+          <button type="submit" onClick={deleteBlog}>
+            <DeleteIcon />
+          </button>
+          <button type="submit" onClick={handleEdit}>
+            <EditIcon />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -10,7 +10,10 @@ export const AuthProvider = ({ children }) => {
     email: "",
     password: "",
   });
-
+        const [userEmail, setUserEmail] = useState(null);
+          const [userBlogs, setUserBlogs] = useState([]);
+        
+      
   // Holds all registered users
   const [users, setUsers] = useState(() => {
     const storedUsers = localStorage.getItem("users");
@@ -74,6 +77,10 @@ export const AuthProvider = ({ children }) => {
         handleUsers,
         login,
         logout,
+        userEmail,
+        setUserEmail,
+        userBlogs,
+        setUserBlogs,
       }}
     >
       {children}

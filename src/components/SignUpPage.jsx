@@ -12,8 +12,7 @@ export default function SignUpPage() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.fullName.trim())
-      newErrors.fullName = "Full name is required";
+    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
     if (!formData.phoneNumber.trim())
       newErrors.phoneNumber = "Phone number is required";
     else if (!/^\d{10}$/.test(formData.phoneNumber))
@@ -37,8 +36,8 @@ export default function SignUpPage() {
     e.preventDefault();
 
     if (validateForm()) {
-      handleUsers(formData); // ✅ Add new user to users array
-      login(formData); // ✅ Log in the newly signed-up user
+      handleUsers(formData); //  Add new user to users array
+      login(formData);
       navigate("/accountSettingPage");
     }
   };

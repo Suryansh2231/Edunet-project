@@ -32,16 +32,29 @@ function Contact() {
             <a href="mailto:suryansh2231@gmail.com">
               <i className="fas fa-envelope"></i> suryansh2231@gmail.com
             </a>
-            <a href="https://github.com/suryansh2231" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/suryansh2231"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-github"></i> github.com/suryansh2231
             </a>
           </div>
 
           <div className="contact-right">
-            <a href="https://linkedin.com/in/suryanshgupta-dev" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-linkedin"></i> linkedin.com/in/suryanshgupta-dev
+            <a
+              href="https://linkedin.com/in/suryanshgupta-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-linkedin"></i>{" "}
+              linkedin.com/in/suryanshgupta-dev
             </a>
-            <a href="https://www.instagram.com/sur_ya0823/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/sur_ya0823/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-instagram"></i> sur_ya0823
             </a>
             <a className="message-btn" onClick={openModal}>
@@ -53,7 +66,9 @@ function Contact() {
         {isModalOpen && (
           <div className="modal" onClick={handleOutsideClick}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <span className="close" onClick={closeModal}>&times;</span>
+              <span className="close" onClick={closeModal}>
+                &times;
+              </span>
               <h2>Send a Message</h2>
               <form action="https://formspree.io/f/mldlqkra" method="POST">
                 <label>

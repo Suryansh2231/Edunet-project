@@ -12,7 +12,7 @@ function About() {
         </div>
       </div>
       <h1 className="heading">About Me</h1>
-      <p>
+      <p className="about-para">
         "Hi, I’m Suryansh Gupta, a student pursuing a degree in Artificial
         Intelligence and Machine Learning. I’m passionate about frontend
         development and building responsive web applications. This personal blog
@@ -20,7 +20,7 @@ function About() {
         and learning experiences in web development."
       </p>
       <h1 className="heading">About the Blog</h1>
-      <p>
+      <p className="about-para">
         "This blog is designed as a simple, responsive platform for writers.
         Unlike traditional complex CMS platforms, it allows posts to be rendered
         dynamically from JSON or local data, making it lightweight and easy to
