@@ -3,12 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import "../App.css";
-import logo from "../images/Profile-logo.jpg"
+import logo from "../images/Profile-logo.jpg";
 import { useAuth } from "../contexts/AuthContext";
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState();
 
-  const {isAuthenticated} = useAuth();
+  const { isAuthenticated } = useAuth();
   function handleToggle() {
     setIsOpen((prev) => !prev);
   }
@@ -63,18 +63,17 @@ function Navbar(props) {
             <Link
               key={5}
               className={
-                currentPage === "/accountSettingPage" ? "link active" : "link"
+                currentPage === "/account" ? "link active" : "link"
               }
-              to="/accountSettingPage"
+              to="/account"
             >
-          <img className="nav-account-img" src={logo} alt="" />
-
+              <img className="nav-account-img" src={logo} alt="" />
             </Link>
           ) : (
             <Link
               key={6}
-              className={currentPage === "/signUpPage" ? "link active" : "link"}
-              to="/signUpPage"
+              className={currentPage === "/signUp" ? "link active" : "link"}
+              to="/signUp"
             >
               SignUp
             </Link>

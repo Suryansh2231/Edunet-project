@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function SignUpPage() {
+export default function SignUp() {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const { formData, setFormData, handleUsers, login, users } = useAuth();
@@ -38,12 +38,12 @@ export default function SignUpPage() {
     if (validateForm()) {
       handleUsers(formData); //  Add new user to users array
       login(formData);
-      navigate("/accountSettingPage");
+      navigate("/account");
     }
   };
 
   const handleGoToSignIn = () => {
-    navigate("/signInPage");
+    navigate("/signIn");
   };
 
   return (

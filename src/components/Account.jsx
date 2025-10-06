@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ProfilePhotoUpload from "./ProfilePhotoUpload";
 import { useAuth } from "../contexts/AuthContext";
 
-function AccountSettingPage() {
+function Account() {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -19,7 +19,7 @@ function AccountSettingPage() {
 
   const handleLogout = () => {
     logout();
-    navigate("/signInPage");
+    navigate("/signIn");
   };
 
   if (!userData) {
@@ -27,7 +27,7 @@ function AccountSettingPage() {
       <div className="container">
         <h2>No user logged in</h2>
         <p>Please sign in to view your account settings.</p>
-        <button className="login-btn" onClick={() => navigate("/signInPage")}>
+        <button className="login-btn" onClick={() => navigate("/signIn")}>
           Go to Sign In
         </button>
       </div>
@@ -68,4 +68,4 @@ function AccountSettingPage() {
   );
 }
 
-export default AccountSettingPage;
+export default Account;

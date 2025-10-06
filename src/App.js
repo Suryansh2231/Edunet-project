@@ -3,38 +3,33 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Blogs from "./components/Blogs";
-import SignInPage from "./components/SignInPage";
-import SignUpPage from "./components/SignUpPage";
-import AccountSettingPage from "./components/AccountSettingPage";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Account from "./components/Account";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import { useAuth } from "../src/contexts/AuthContext";
+import InputArea from "./components/InputArea";
 
 function App() {
   const [blogItem, setBlogItem] = useState(() => {
     const saved = localStorage.getItem("blogItem");
     return saved ? JSON.parse(saved) : [];
   });
-
   const [editBlog, setEditBlog] = useState(null);
+  const { setUserBlogs } = useAuth();
 
   useEffect(() => {
     localStorage.setItem("blogItem", JSON.stringify(blogItem));
   }, [blogItem]);
 
-  // ✅ Correct use of Date.now() for unique ID
   function addBlog(blog) {
     const newBlog = {
       ...blog,
-      id: Date.now(), // unique ID based on timestamp
+      id: Date.now(),
     };
     setBlogItem((prevItem) => [...prevItem, newBlog]);
-  }
-
-  function deleteBlog(id) {
-    setBlogItem((prevBlogItem) =>
-      prevBlogItem.filter((blog) => blog.id !== id)
-    );
   }
 
   const handleEdit = (blog) => {
@@ -42,9 +37,22 @@ function App() {
   };
 
   const handleUpdate = (updatedBlog) => {
-    setBlogItem((prev) =>
-      prev.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
+    if (!updatedBlog || !updatedBlog.id) return;
+
+    const currentUser = JSON.parse(localStorage.getItem("formData"));
+    const savedUserBlogs =
+      JSON.parse(localStorage.getItem(`userBlogs_${currentUser.email}`)) || [];
+
+    const editedBlogs = savedUserBlogs.map((blog) =>
+      blog.id === updatedBlog.id ? updatedBlog : blog
     );
+
+    localStorage.setItem(
+      `userBlogs_${currentUser.email}`,
+      JSON.stringify(editedBlogs)
+    );
+
+    setUserBlogs(editedBlogs);
     setEditBlog(null);
   };
 
@@ -57,23 +65,19 @@ function App() {
           element={
             <Home
               addBlog={addBlog}
-              blogItem={blogItem}
-              deleteBlog={deleteBlog}
-              editedBlog={editBlog}
-              updateBlog={handleUpdate}
-              handleEditBlog={handleEdit}
+              handleUpdate={handleUpdate}
+              handleEdit={handleEdit}
+              editBlog={editBlog}
             />
           }
         />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/blogs"
-          element={<Blogs blogItem={blogItem} deleteBlog={deleteBlog} />}
-        />
+        <Route path="/blogs" element={<Blogs handleEdit={handleEdit} />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signInPage" element={<SignInPage />} />
-        <Route path="/signUpPage" element={<SignUpPage />} />
-        <Route path="/accountSettingPage" element={<AccountSettingPage />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/inputArea" element={<InputArea />} />
       </Routes>
       <Footer />
     </div>

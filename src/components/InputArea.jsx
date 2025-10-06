@@ -35,7 +35,6 @@ function InputArea(props) {
     }));
   }
 
-  // Handle adding or updating a blog
   function handleAdd() {
     if (!isAuthenticated || !userEmail) {
       alert("Please sign in to add a blog.");
@@ -51,38 +50,44 @@ function InputArea(props) {
       return;
     }
 
-    const newBlog = {
-      id: Date.now(),
-      title: blog.title,
-      content: blog.content,
-      blogger: blog.blogger,
-      createdAt: Date.now(),
-      date: new Date().toISOString(),
-    };
-
-    // Load existing blogs for the current user
     const storedBlogs =
       JSON.parse(localStorage.getItem(`userBlogs_${userEmail}`)) || [];
 
     let updatedBlogs;
 
+    // Edit mode (if editing an existing blog)
     if (props.editedBlogItem) {
+      const updatedBlog = {
+        ...blog,
+        id: props.editedBlogItem.id,
+        createdAt: props.editedBlogItem.createdAt,
+        date: new Date().toISOString(),
+      };
+
       updatedBlogs = storedBlogs.map((b) =>
-        b.id === newBlog.id ? newBlog : b
+        b.id === updatedBlog.id ? updatedBlog : b
       );
-      props.onUpdate(newBlog);
+
+      props.onUpdate(updatedBlog);
     } else {
+      const newBlog = {
+        id: Date.now(),
+        title: blog.title,
+        content: blog.content,
+        blogger: blog.blogger,
+        createdAt: Date.now(),
+        date: new Date().toISOString(),
+      };
+
       updatedBlogs = [...storedBlogs, newBlog];
       props.onAdd(newBlog);
     }
 
-    // Save to localStorage for this specific user
     localStorage.setItem(
       `userBlogs_${userEmail}`,
       JSON.stringify(updatedBlogs)
     );
 
-    // Reset the blog form
     setBlog({ id: null, title: "", content: "", blogger: "" });
   }
 

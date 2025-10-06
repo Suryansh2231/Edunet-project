@@ -39,16 +39,16 @@ function ProfilePhotoUpload() {
     <div style={{ textAlign: "center" }}>
       {image && (
         <div>
-          {" "}
           <img
             src={image}
             alt="profile preview"
             style={{ width: "150px", height: "150px", borderRadius: "50%" }}
-          />{" "}
+          />
         </div>
-      )}{" "}
-      {!image &&
-      <input type="file" accept="image/*" onChange={handleImageChange} />}
+      )}
+      {!image && (
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+      )}
     </div>
   );
 }

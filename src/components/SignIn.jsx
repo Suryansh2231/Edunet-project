@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function SignInPage() {
+export default function SignIn() {
   const navigate = useNavigate();
   const { users, login } = useAuth();
 
@@ -39,12 +39,12 @@ export default function SignInPage() {
 
       //  Log in user and redirect
       login(existingUser);
-      navigate("/accountSettingPage");
+      navigate("/account");
     }
   };
 
   const handleGoToSignUp = () => {
-    navigate("/signUpPage");
+    navigate("/signUp");
   };
 
   return (

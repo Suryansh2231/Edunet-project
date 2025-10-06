@@ -49,15 +49,12 @@ function Home(props) {
         </div>
       </div>
 
-      {/* Input Section */}
       <InputArea
         onAdd={props.addBlog}
-        onAccount={props.checkSignUp}
-        editedBlogItem={props.editedBlog}
-        onUpdate={props.updateBlog}
+        editedBlogItem={props.editBlog} // shows data when editing
+        onUpdate={props.handleUpdate} // saves after editing
       />
-      {isAuthenticated && <h1 className="heading">Recent Blogs</h1>}
-      {/* Recent Blogs */}
+
       <div className="parent">
         {isAuthenticated && latestBlogs.length > 0
           ? latestBlogs.map((blog) => (
@@ -67,10 +64,8 @@ function Home(props) {
                 title={blog.title}
                 content={blog.content}
                 blogger={blog.blogger}
-                onDelete={props.deleteBlog}
-                onHandleBlog={props.handleEditBlog}
-                blogItem={blog}
-                checkUserSignUp={isAuthenticated}
+                blogData={blog}
+                onEdit={props.handleEdit}
               />
             ))
           : isAuthenticated && <p className="blogs-desc">No blogs yet!</p>}

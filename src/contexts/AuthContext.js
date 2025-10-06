@@ -10,10 +10,9 @@ export const AuthProvider = ({ children }) => {
     email: "",
     password: "",
   });
-        const [userEmail, setUserEmail] = useState(null);
-          const [userBlogs, setUserBlogs] = useState([]);
-        
-      
+  const [userEmail, setUserEmail] = useState(null);
+  const [userBlogs, setUserBlogs] = useState([]);
+
   // Holds all registered users
   const [users, setUsers] = useState(() => {
     const storedUsers = localStorage.getItem("users");
@@ -39,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // ✅ Add a new user to the users array
+  //  Add a new user to the users array
   const handleUsers = (newUser) => {
     setUsers((prev) => {
       const updated = [...prev, newUser];
@@ -48,14 +47,12 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  // ✅ Log in a user (set formData + persist)
   const login = (userData) => {
     setFormData(userData);
     setIsAuthenticated(true);
     localStorage.setItem("formData", JSON.stringify(userData));
   };
 
-  // ✅ Log out and clear data
   const logout = () => {
     setFormData({
       fullName: "",
@@ -88,5 +85,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook
 export const useAuth = () => useContext(AuthContext);
