@@ -236,16 +236,31 @@ body {
   background-image: url("https://plus.unsplash.com/premium_photo-1669658981858-b2ae0d7581a3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNvbnRhY3QlMjB1c3xlbnwwfHwwfHx8MA%3D%3D");
 }
 
-button {
+ button {
   height: 2rem;
   width: auto;
-  background-color: #6d94c5;
-  margin: 0.5rem;
-  color: #f7f7f7;
-  border-radius: 5px;
+  background-color: #1E88E5; 
+  color: #fff;
+  border: none;
+  margin: .5rem;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
+
 button:hover {
-  background: #0056cc;
+  background-color: #1565C0; /* Slightly darker on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  background-color: #0D47A1; 
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Contact Section */
@@ -411,7 +426,7 @@ i {
     padding: 1rem;
     gap: 1rem;
     overflow: hidden;
-    max-height: 0; /* hidden by default */
+    max-height: 0; 
     opacity: 0;
     pointer-events: none;
     transition: max-height 0.3s ease, opacity 0.3s ease;
