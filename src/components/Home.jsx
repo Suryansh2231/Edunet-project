@@ -54,7 +54,8 @@ function Home(props) {
         editedBlogItem={props.editBlog} // shows data when editing
         onUpdate={props.handleUpdate} // saves after editing
       />
-
+      {isAuthenticated &&
+      <h1 className="heading" style={{color :"red"}}>Recent Blogs</h1>}
       <div className="parent">
         {isAuthenticated && latestBlogs.length > 0
           ? latestBlogs.map((blog) => (
@@ -63,8 +64,7 @@ function Home(props) {
                 id={blog.id}
                 title={blog.title}
                 content={blog.content}
-                blogger={blog.blogger}
-                blogData={blog}
+                blogger={blog.blogger}   
                 onEdit={props.handleEdit}
               />
             ))

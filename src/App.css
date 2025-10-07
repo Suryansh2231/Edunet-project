@@ -182,7 +182,10 @@ body {
   width: 80%;
 }
 .input-container textarea {
-  height: 2rem;
+  field-sizing: content;
+  min-height: 2rem; 
+  resize: none; 
+  overflow: hidden; 
   margin-top: 1rem;
   padding: 0.5rem;
   border: none;

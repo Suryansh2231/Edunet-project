@@ -104,14 +104,12 @@ function InputArea(props) {
         <textarea
           name="content"
           value={blog.content}
-          rows={3}
           placeholder="Blog Content"
           onChange={handleChange}
         ></textarea>
         <textarea
           name="blogger"
           value={blog.blogger}
-          rows={2}
           placeholder="Blogger Name"
           onChange={handleChange}
         ></textarea>
